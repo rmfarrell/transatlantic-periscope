@@ -1,4 +1,4 @@
-import Relation from 'relation';
+import Relation from './relation';
 
 export default {
   relationships: Relation,

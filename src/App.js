@@ -1,8 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
+import relationshipPage from './api/relationshipPage';
+import media from './api/media';
 import './App.css';
 
 function App() {
+  console.log(media());
   return (
     <div className="App">
       <header className="App-header">

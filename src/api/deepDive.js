@@ -1,6 +1,6 @@
-import Relation from 'relation';
-import ExternalResource from 'externalResource';
-import RSSItem from 'rssItem';
+import Relation from './relation';
+import ExternalResource from './externalResource';
+import RSSItem from './rssItem';
 
 const CustomArticle = {
   title: '',

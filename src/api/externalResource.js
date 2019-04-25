@@ -1,6 +1,6 @@
-import Relation from 'relation';
-import Media from 'media';
-import Url from 'url';
+import Relation from './relation';
+import Media from './media';
+import Url from './url';
 
 export default {
   tite: '',

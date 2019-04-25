@@ -1,0 +1,32 @@
+export default {
+  COUNTRIES: {
+    AT: 'Austria',
+    BE: 'Belgium',
+    BG: 'Bulgaria',
+    CY: 'Cyprus',
+    CZ: 'Czech Republic',
+    DK: 'Denmark',
+    DE: 'Germany',
+    EE: 'Estonia',
+    ES: 'Spain',
+    FI: 'Finland',
+    FR: 'France',
+    GB: 'United Kingdom',
+    GR: 'Greece',
+    HU: 'Hungary',
+    HR: 'Croatia',
+    IE: 'Ireland',
+    IT: 'Italy',
+    LV: 'Latvia',
+    LT: 'Lithuania',
+    LU: 'Luxembourg',
+    MT: 'Malta',
+    NL: 'Netherlands',
+    PO: 'Poland',
+    PT: 'Portugal',
+    RO: 'Romania',
+    SE: 'Sweden',
+    SI: 'Slovenia',
+    SK: 'Slovakia'
+  }
+};
