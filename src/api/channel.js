@@ -27,7 +27,7 @@ function fake() {
     link: faker.internet.url(),
     last_retrieved: faker.date.recent(),
     ttl: faker.date.future(),
-    image: Media(),
+    image: Media().value,
     url: faker.internet.url(),
     title_override: fakeTitle(1, 5)
   });
