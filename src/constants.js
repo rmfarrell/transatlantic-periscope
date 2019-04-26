@@ -29,6 +29,15 @@ export const COUNTRIES = {
   SK: 'Slovakia'
 };
 
+export const DOCUMENT_TYPES = [
+  'Article',
+  'Policy Document',
+  'Analysis',
+  'Opinion',
+  'Media',
+  'Data'
+];
+
 // TK
 export const ISSUES = [
   'Trade',

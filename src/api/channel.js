@@ -3,7 +3,6 @@ import Joi from '@hapi/joi';
 import Media from './media';
 import { newModelInstance, fakeTitle } from './helpers';
 
-// TODO add regex
 const schema = Joi.object().keys({
   title: Joi.string().required(),
   description: Joi.string(),
