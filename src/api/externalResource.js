@@ -11,11 +11,11 @@ const schema = Joi.object().keys({
   description: Joi.string(),
   author: Joi.string(),
   publication_date: Joi.date(),
-  image: Joi.object()
+  image: Joi.object(),
+  relationships: Joi.object()
 
   // suggested
   // type: '',
-  // relationships: Relation
 });
 
 export default newExternalResource;
@@ -31,6 +31,7 @@ function fake() {
     description: faker.lorem.words(50, 255),
     author: faker.name.findName(),
     publication_date: faker.date.past(),
-    image: Media().value
+    image: Media().value,
+    relationships: Relation().value
   });
 }
