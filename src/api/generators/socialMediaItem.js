@@ -2,6 +2,7 @@ import faker from 'faker';
 import Joi from '@hapi/joi';
 import { newModelInstance } from './helpers';
 import Relation from './relation';
+import schema from '../schemae/socialMediaItem';
 
 const schema = Joi.object().keys({
   last_retrieved: Joi.date(),

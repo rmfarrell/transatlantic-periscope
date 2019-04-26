@@ -2,6 +2,7 @@ import faker from 'faker';
 import Joi from '@hapi/joi';
 import { COUNTRIES, ISSUES, ENTITIES } from '../constants';
 import { newModelInstance, xTimes, pluckFromArray } from './helpers';
+import schema from '../schemae/relation';
 
 const schema = Joi.object().keys({
   primary_country: Joi.string().length(2),

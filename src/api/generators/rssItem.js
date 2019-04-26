@@ -6,6 +6,7 @@ import Url from './url';
 import Channel from './channel';
 import { DOCUMENT_TYPES } from '../constants';
 import { newModelInstance, fakeTitle } from './helpers';
+import schema from '../schemae/rssItem';
 
 const schema = Joi.object().keys({
   id: Joi.string(),

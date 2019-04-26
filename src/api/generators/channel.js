@@ -1,18 +1,7 @@
 import faker from 'faker';
-import Joi from '@hapi/joi';
 import Media from './media';
+import schema from '../schemae/channel';
 import { newModelInstance, fakeTitle } from './helpers';
-
-const schema = Joi.object().keys({
-  title: Joi.string().required(),
-  description: Joi.string(),
-  link: Joi.string(),
-  last_retrieved: Joi.date(),
-  ttl: Joi.date(),
-  image: Joi.object(),
-  url: Joi.string(),
-  title_override: Joi.string()
-});
 
 export default newChannel;
 

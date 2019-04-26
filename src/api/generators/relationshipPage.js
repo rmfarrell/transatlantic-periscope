@@ -4,6 +4,7 @@ import DeepDive from './deepDive';
 import faker from 'faker';
 import Joi from '@hapi/joi';
 import { newModelInstance } from './helpers';
+import schema from '../schemae/relationshipPage';
 
 const schema = Joi.object().keys({
   relationship_status: Joi.object()

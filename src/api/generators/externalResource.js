@@ -3,6 +3,7 @@ import Media from './media';
 import Url from './url';
 import faker from 'faker';
 import Joi from '@hapi/joi';
+import schema from '../schemae/externalResource';
 import { newModelInstance, fakeTitle } from './helpers';
 
 const schema = Joi.object().keys({

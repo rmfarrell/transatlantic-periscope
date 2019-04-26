@@ -1,6 +1,7 @@
 import faker from 'faker';
 import Joi from '@hapi/joi';
 import { newModelInstance } from './helpers';
+import schema from '../schemae/media';
 
 // TODO add regex
 const schema = Joi.object().keys({
