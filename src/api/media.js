@@ -1,5 +1,6 @@
 import faker from 'faker';
 import Joi from '@hapi/joi';
+import { newModelInstance } from './helpers';
 
 // TODO add regex
 const schema = Joi.object().keys({
@@ -13,11 +14,7 @@ const schema = Joi.object().keys({
 export default newMedia;
 
 function newMedia(input) {
-  if (!input) {
-    return fake();
-  }
-  const { error, value } = Joi.validate(input, schema);
-  return { error, value };
+  return newModelInstance(input, schema, fake);
 }
 
 function fake() {

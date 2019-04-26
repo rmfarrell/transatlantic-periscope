@@ -3,6 +3,7 @@ import RSSItem from './rssItem';
 import DeepDive from './deepDive';
 import faker from 'faker';
 import Joi from '@hapi/joi';
+import { newModelInstance } from './helpers';
 
 const schema = Joi.object().keys({
   relationship_status: Joi.object()
@@ -31,11 +32,7 @@ const schema = Joi.object().keys({
 export default newRelationshipPage;
 
 function newRelationshipPage(input) {
-  if (!input) {
-    return fake();
-  }
-  const { error, value } = Joi.validate(input, schema);
-  return { error, value };
+  return newModelInstance(input, schema, fake);
 }
 
 function fake() {
