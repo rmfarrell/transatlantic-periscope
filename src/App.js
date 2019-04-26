@@ -1,10 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
-import ExternalResource from './api/externalResource';
 import './App.css';
 
 function App() {
-  console.log(ExternalResource());
   return (
     <div className="App">
       <header className="App-header">
