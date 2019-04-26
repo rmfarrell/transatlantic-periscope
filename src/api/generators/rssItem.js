@@ -1,5 +1,4 @@
 import faker from 'faker';
-import Joi from '@hapi/joi';
 import Media from './media';
 import Relation from './relation';
 import Url from './url';
@@ -7,21 +6,6 @@ import Channel from './channel';
 import { DOCUMENT_TYPES } from '../constants';
 import { newModelInstance, fakeTitle } from './helpers';
 import schema from '../schemae/rssItem';
-
-const schema = Joi.object().keys({
-  id: Joi.string(),
-  channel: Joi.object().keys(),
-  item: Joi.object().keys({
-    title: Joi.string().required(),
-    link: Joi.string(),
-    description: Joi.string(),
-    author: Joi.string(),
-    enclosure: Joi.object(),
-    publication_date: Joi.date(),
-    relationships: Joi.object(),
-    document_type: Joi.string().valid(...DOCUMENT_TYPES)
-  })
-});
 
 export default newRssItem;
 

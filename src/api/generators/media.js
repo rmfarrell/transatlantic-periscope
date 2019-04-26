@@ -1,16 +1,6 @@
 import faker from 'faker';
-import Joi from '@hapi/joi';
 import { newModelInstance } from './helpers';
 import schema from '../schemae/media';
-
-// TODO add regex
-const schema = Joi.object().keys({
-  url: Joi.string().required(),
-  width: Joi.number(),
-  height: Joi.number(),
-  length: Joi.number(),
-  type: Joi.string()
-});
 
 export default newMedia;
 

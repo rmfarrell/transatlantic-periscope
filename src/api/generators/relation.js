@@ -4,15 +4,6 @@ import { COUNTRIES, ISSUES, ENTITIES } from '../constants';
 import { newModelInstance, xTimes, pluckFromArray } from './helpers';
 import schema from '../schemae/relation';
 
-const schema = Joi.object().keys({
-  primary_country: Joi.string().length(2),
-  countries: Joi.array().items(Joi.string().valid(...Object.keys(COUNTRIES))),
-  primary_issue: Joi.string().empty(''),
-  issues: Joi.array().items(Joi.string()),
-  entities: Joi.array().items(Joi.string()),
-  deep_dives: Joi.array().items(Joi.object())
-});
-
 export default newRelation;
 
 function newRelation(input) {
