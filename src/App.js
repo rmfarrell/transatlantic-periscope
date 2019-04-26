@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-import Url from './api/url';
+import Channel from './api/channel';
 import './App.css';
 
 function App() {
-  console.log(Url());
+  console.log(Channel().value.title);
   return (
     <div className="App">
       <header className="App-header">

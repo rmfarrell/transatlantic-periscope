@@ -1,18 +1,7 @@
 import Relation from './relation';
 import Media from './media';
 import Url from './url';
-
-const Channel = {
-  tite: '',
-  description: '',
-  link: '',
-  last_retrieved: '',
-  ttl: 0,
-  image: Media,
-  url: Url,
-  title_override: '',
-  icon: ''
-};
+import Channel from './channel';
 
 const Item = {
   title: '',

@@ -10,14 +10,14 @@ const schema = Joi.object().keys({
   status: Joi.boolean()
 });
 
-export default newMedia;
+export default newUrl;
 
-function newMedia(input) {
+function newUrl(input) {
   return newModelInstance(input, schema, fake);
 }
 
 function fake() {
-  return newMedia({
+  return newUrl({
     address: faker.internet.url(),
     last_accessed: faker.date.past(),
     last_retrieved: faker.date.recent(),
