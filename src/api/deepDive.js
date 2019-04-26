@@ -43,8 +43,8 @@ function fake() {
       featured: {},
       collection: []
     },
-    author: faker.lorem.words(2),
-    creator: faker.lorem.words(2),
+    author: faker.name.name(),
+    creator: faker.name.name(),
     relationships: Relation().value
   });
 }

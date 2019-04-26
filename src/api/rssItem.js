@@ -2,6 +2,7 @@ import faker from 'faker';
 import Joi from '@hapi/joi';
 import Media from './media';
 import Relation from './relation';
+import Url from './url';
 import Channel from './channel';
 import { DOCUMENT_TYPES } from '../constants';
 import { newModelInstance, fakeTitle } from './helpers';
@@ -33,11 +34,11 @@ function fake() {
     channel: Channel().value,
     item: {
       title: fakeTitle(6, 20),
-      link: faker.internet.url(),
+      link: Url().value,
       description: faker.lorem.words(
         faker.random.number({ min: 100, max: 255 })
       ),
-      author: faker.lorem.words(2),
+      author: faker.name.name(),
       enclosure: Media().value,
       publication_date: faker.date.recent(),
       relationships: Relation().value,

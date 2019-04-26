@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-import DeepDive from './api/deepDive';
+import ExternalResource from './api/externalResource';
 import './App.css';
 
 function App() {
-  console.log(DeepDive());
+  console.log(ExternalResource());
   return (
     <div className="App">
       <header className="App-header">
