@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-import RSSItem from './api/rssItem';
+import DeepDive from './api/deepDive';
 import './App.css';
 
 function App() {
-  console.log(RSSItem());
+  console.log(DeepDive());
   return (
     <div className="App">
       <header className="App-header">
