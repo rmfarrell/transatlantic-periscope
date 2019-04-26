@@ -1,11 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-import relationshipPage from './api/relationshipPage';
-import Relation from './api/relation';
+import Url from './api/url';
 import './App.css';
 
 function App() {
-  console.log(Relation());
+  console.log(Url());
   return (
     <div className="App">
       <header className="App-header">
