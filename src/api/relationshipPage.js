@@ -47,6 +47,6 @@ function fake() {
       collection: []
     },
     country: 'FR',
-    curators: []
+    curators: [faker.lorem.words(2)]
   });
 }
