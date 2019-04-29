@@ -4,8 +4,8 @@ import RSSItem from './rssItem';
 import Relation from './relation';
 
 const articles = [RSSItem, ExternalResource];
-
-export default Joi.object().keys({
+let DeepDive;
+DeepDive = Joi.object().keys({
   custom_article: Joi.object()
     .keys({
       title: Joi.string(),
@@ -15,11 +15,13 @@ export default Joi.object().keys({
     })
     .required(),
   articles: Joi.object().keys({
-    featured: Joi.alternatives(...articles),
-    collection: Joi.array().items(...articles)
+    featured: Joi.alternatives(...articles, Joi.lazy(() => DeepDive)),
+    collection: Joi.array().items(...articles, Joi.lazy(() => DeepDive))
   }),
   author: Joi.string(),
   creator: Joi.string(),
   // TODO: import External Resource schema
   relationships: Relation
 });
+
+export default DeepDive;
