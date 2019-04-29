@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ss from '../style/Main.module.css';
 import useStoreon from 'storeon/react';
 import deepDiveGenerator from '../api/generators/deepDive';
 import relationshipPageGenerator from '../api/generators/relationshipPage';
 
-export default function({ model = '' }) {
-  const stringify = json => {
+export default function(props) {
+  console.log(props);
+  const { model } = props,
+    stringify = json => {
       try {
         return JSON.stringify(json, null, 4);
       } catch (e) {
@@ -13,11 +15,12 @@ export default function({ model = '' }) {
         return {};
       }
     },
-    { relationship, deepdive, dispatch } = useStoreon(model),
-    getModel = () => {
-      return { relationship, deepdive }[model];
-    },
-    [json, setJson] = useState(stringify(getModel())),
+    { relationship, deepdive, dispatch } = useStoreon(
+      'relationship',
+      'deepdive'
+    ),
+    data = { relationship, deepdive }[model],
+    [json, setJson] = useState(''),
     [error, setError] = useState(null),
     [isDirty, setIsDirty] = useState(false),
     generate = () => {
@@ -57,9 +60,13 @@ export default function({ model = '' }) {
       }
     },
     reset = () => {
-      update(stringify(getModel()));
+      update(stringify(data));
       setIsDirty(false);
     };
+
+  useEffect(() => {
+    setJson(stringify(data));
+  }, [data]);
 
   return (
     <div className={ss.root}>
@@ -86,7 +93,3 @@ export default function({ model = '' }) {
     </div>
   );
 }
-
-const json2 = `
-{ "test": true, "test2": false, hi: "true" }
-`;
