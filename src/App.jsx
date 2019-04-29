@@ -1,18 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
+import StoreContext from 'storeon/react/context';
+import store from './store/index.js';
 import './App.css';
 import style from './style/Main.module.css';
-import APIExplorer from './APIExplorer.jsx';
-import Home from './APIExplorer.jsx';
+import APIExplorer from './api-explorer/Index.jsx';
 import { Router, Link } from '@reach/router';
 
 function App() {
   return (
-    <Router>
-      <Main path="/">
-        <APIExplorer path="api/:model" />
-      </Main>
-    </Router>
+    <StoreContext.Provider value={store}>
+      <Router>
+        <Main path="/">
+          <APIExplorer path="api/:model" />
+        </Main>
+      </Router>
+    </StoreContext.Provider>
   );
 }
 
