@@ -2,7 +2,7 @@ import Joi from '@hapi/joi';
 import Media from './media';
 import Relation from './relation';
 import Channel from './channel';
-import { DOCUMENT_TYPES } from '../constants';
+import { DOCUMENT_TYPES } from '../../constants';
 
 export default Joi.object().keys({
   id: Joi.string(),

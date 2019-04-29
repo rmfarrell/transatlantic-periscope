@@ -1,10 +1,9 @@
 import Joi from '@hapi/joi';
 import ExternalResource from './externalResource';
 import RSSItem from './rssItem';
-import DeepDive from './deepDive';
 import Relation from './relation';
 
-const articles = [RSSItem, DeepDive, ExternalResource];
+const articles = [RSSItem, ExternalResource];
 
 export default Joi.object().keys({
   custom_article: Joi.object()

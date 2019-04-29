@@ -21,8 +21,8 @@ function fake() {
       featured: {},
       collection: []
     },
-    author: faker.name.name(),
-    creator: faker.name.name(),
+    author: faker.name.findName(),
+    creator: faker.name.findName(),
     relationships: Relation().value
   });
 }

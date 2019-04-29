@@ -1,5 +1,5 @@
 import Joi from '@hapi/joi';
-import { COUNTRIES } from '../constants';
+import { COUNTRIES } from '../../constants';
 
 export default Joi.object().keys({
   primary_country: Joi.string().length(2),
