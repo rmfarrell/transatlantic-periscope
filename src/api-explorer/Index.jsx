@@ -4,8 +4,16 @@ import useStoreon from 'storeon/react';
 import deepDiveGenerator from '../api/generators/deepDive';
 
 export default function({ model = '' }) {
-  const { deepdive, dispatch } = useStoreon('deepdive'),
-    [json, setJson] = useState(JSON.stringify(deepdive, null, 4)),
+  const stringify = json => {
+      try {
+        return JSON.stringify(json, null, 4);
+      } catch (e) {
+        console.error(e);
+        return {};
+      }
+    },
+    { deepdive, dispatch } = useStoreon('deepdive'),
+    [json, setJson] = useState(stringify(deepdive)),
     [error, setError] = useState(null),
     [isDirty, setIsDirty] = useState(false),
     generate = () => {
@@ -34,7 +42,6 @@ export default function({ model = '' }) {
       setJson(val);
       setIsDirty(true);
     },
-    onChange = ev => {},
     ranomizeModel = () => {
       const { error, value } = generate();
       if (error) {
@@ -43,13 +50,9 @@ export default function({ model = '' }) {
         update(stringify(value));
       }
     },
-    stringify = json => {
-      try {
-        return JSON.stringify(json, null, 4);
-      } catch (e) {
-        console.error(e);
-        return {};
-      }
+    reset = () => {
+      update(stringify(deepdive));
+      setIsDirty(false);
     };
 
   return (
@@ -65,6 +68,11 @@ export default function({ model = '' }) {
         <button onClick={ranomizeModel} type="button">
           <span role="img" aria-label="die">
             🎲
+          </span>
+        </button>
+        <button onClick={reset} type="button">
+          <span role="img" aria-label="die">
+            🔄
           </span>
         </button>
         {error && <div className={ss.error}>{error}</div>}
