@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ss from '../style/Main.module.css';
 import useStoreon from 'storeon/react';
 import deepDiveGenerator from '../api/generators/deepDive';
+import relationshipPageGenerator from '../api/generators/relationshipPage';
 
 export default function({ model = '' }) {
   const stringify = json => {
@@ -12,14 +13,19 @@ export default function({ model = '' }) {
         return {};
       }
     },
-    { deepdive, dispatch } = useStoreon('deepdive'),
-    [json, setJson] = useState(stringify(deepdive)),
+    { relationship, deepdive, dispatch } = useStoreon(model),
+    getModel = () => {
+      return { relationship, deepdive }[model];
+    },
+    [json, setJson] = useState(stringify(getModel())),
     [error, setError] = useState(null),
     [isDirty, setIsDirty] = useState(false),
     generate = () => {
       switch (model) {
         case 'deepdive':
           return deepDiveGenerator();
+        case 'relationship':
+          return relationshipPageGenerator();
         default:
           return {};
       }
@@ -51,7 +57,7 @@ export default function({ model = '' }) {
       }
     },
     reset = () => {
-      update(stringify(deepdive));
+      update(stringify(getModel()));
       setIsDirty(false);
     };
 
