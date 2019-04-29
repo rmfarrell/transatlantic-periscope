@@ -7,6 +7,7 @@ export default function({ model = '' }) {
   const { deepdive, dispatch } = useStoreon('deepdive'),
     [json, setJson] = useState(JSON.stringify(deepdive, null, 4)),
     [error, setError] = useState(null),
+    [isDirty, setIsDirty] = useState(false),
     generate = () => {
       switch (model) {
         case 'deepdive':
@@ -15,7 +16,8 @@ export default function({ model = '' }) {
           return {};
       }
     },
-    update = () => {
+    onSubmit = ev => {
+      ev.preventDefault();
       let parsed;
       try {
         parsed = JSON.parse(json);
@@ -26,17 +28,19 @@ export default function({ model = '' }) {
       setJson(stringify(parsed));
       setError(null);
       dispatch(`${model}/update`, parsed);
+      setIsDirty(false);
     },
-    onSubmit = ev => {
-      ev.preventDefault();
-      update();
+    update = val => {
+      setJson(val);
+      setIsDirty(true);
     },
+    onChange = ev => {},
     ranomizeModel = () => {
       const { error, value } = generate();
       if (error) {
         return setError(error);
       } else {
-        setJson(stringify(value));
+        update(stringify(value));
       }
     },
     stringify = json => {
@@ -55,10 +59,10 @@ export default function({ model = '' }) {
           rows="50"
           cols="80"
           value={json}
-          onChange={ev => setJson(ev.target.value)}
+          onChange={ev => update(ev.target.value)}
         />
-        <input type="submit" value="save" />
-        <button onClick={ranomizeModel}>
+        <input type="submit" value="save" disabled={!isDirty} />
+        <button onClick={ranomizeModel} type="button">
           <span role="img" aria-label="die">
             🎲
           </span>
