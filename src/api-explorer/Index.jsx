@@ -64,13 +64,13 @@ export default function({ model = '' }) {
           value={json}
           onChange={ev => update(ev.target.value)}
         />
-        <input type="submit" value="save" disabled={!isDirty} />
+        <input type="submit" value="💾" disabled={!isDirty} />
         <button onClick={ranomizeModel} type="button">
           <span role="img" aria-label="die">
             🎲
           </span>
         </button>
-        <button onClick={reset} type="button">
+        <button onClick={reset} type="button" disabled={!isDirty}>
           <span role="img" aria-label="die">
             🔄
           </span>
