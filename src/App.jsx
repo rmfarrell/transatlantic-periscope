@@ -5,13 +5,28 @@ import './App.css';
 import style from './style/Main.module.css';
 import APIExplorer from './api-explorer/Index.jsx';
 import { Router, Link } from '@reach/router';
+import deepDiveGenerator from './api/generators/deepDive';
+import relationshipPageGenerator from './api/generators/relationshipPage';
+import validateDeepDive from './api/schemae/deepDive';
+import validateRelationship from './api/schemae/relationshipPage';
 
 function App() {
   return (
     <StoreContext.Provider value={store}>
       <Router>
         <Main path="/">
-          <APIExplorer path="api/:model" />
+          <APIExplorer
+            path="api/relationship"
+            model="relationship"
+            generate={relationshipPageGenerator}
+            validate={validateRelationship}
+          />
+          <APIExplorer
+            path="api/deepdive"
+            model="deepdive"
+            generate={deepDiveGenerator}
+            validate={validateDeepDive}
+          />
         </Main>
       </Router>
     </StoreContext.Provider>
