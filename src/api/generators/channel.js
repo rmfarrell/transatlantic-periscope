@@ -12,7 +12,7 @@ function newChannel(input) {
 function fake() {
   return newChannel({
     title: fakeTitle(1, 5),
-    description: faker.lorem.words(faker.random.number({ min: 150, max: 600 })),
+    description: faker.lorem.words(faker.random.number({ min: 10, max: 100 })),
     link: faker.internet.url(),
     last_retrieved: faker.date.recent(),
     ttl: faker.date.future(),

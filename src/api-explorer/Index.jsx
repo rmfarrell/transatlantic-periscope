@@ -5,7 +5,6 @@ import deepDiveGenerator from '../api/generators/deepDive';
 import relationshipPageGenerator from '../api/generators/relationshipPage';
 
 export default function(props) {
-  console.log(props);
   const { model } = props,
     stringify = json => {
       try {
@@ -88,7 +87,7 @@ export default function(props) {
             🔄
           </span>
         </button>
-        {error && <div className={ss.error}>{error}</div>}
+        {error && <div className={ss.error}>{error.toString()}</div>}
       </form>
     </div>
   );

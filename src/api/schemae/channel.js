@@ -6,7 +6,7 @@ export default Joi.object().keys({
   description: Joi.string(),
   link: Joi.string(),
   last_retrieved: Joi.date(),
-  ttl: Joi.date(),
+  ttl: Joi.date().required(),
   image: Media,
   url: Joi.string(),
   title_override: Joi.string()

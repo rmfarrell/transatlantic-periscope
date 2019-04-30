@@ -1,7 +1,25 @@
 import Joi from '@hapi/joi';
 import faker from 'faker';
+import RSSItem from './rssItem';
+import ExternalResource from './externalResource';
+import DeepDive from './deepDive';
+import SocialMediaItem from './socialMediaItem';
 
-export { newModelInstance, xTimes, pluckFromArray, initialCaps, fakeTitle };
+const articleTypes = [
+  'externalResource',
+  'deepDive',
+  'rssItem',
+  'socialMediaItem'
+];
+
+export {
+  newModelInstance,
+  xTimes,
+  pluckFromArray,
+  initialCaps,
+  fakeTitle,
+  randomArticle
+};
 
 function newModelInstance(input, schema, randomizer) {
   if (!input && randomizer) {
@@ -37,4 +55,21 @@ function initialCaps(str = '') {
 
 function fakeTitle(min, max) {
   return initialCaps(faker.lorem.words(faker.random.number({ min, max })));
+}
+
+function randomArticle() {
+  const roll = faker.random.number({ min: 0, max: 100 });
+  const chanceMatrix = [
+    [70, RSSItem],
+    [60, () => DeepDive(false)],
+    [30, ExternalResource],
+    [0, SocialMediaItem]
+  ];
+  return SocialMediaItem().value;
+  for (let x = 0; x < chanceMatrix.length; x++) {
+    if (roll > chanceMatrix[x][0]) {
+      console.log(chanceMatrix[x][1]);
+      return chanceMatrix[x][1](false).value;
+    }
+  }
 }

@@ -10,8 +10,14 @@ export default Joi.object().keys({
   author: Joi.string(),
   publication_date: Joi.date(),
   image: Media,
-  relationships: Relation
-
-  // suggested
-  // type: '',
+  relationships: Relation,
+  type: Joi.string()
+    .valid('External Resource')
+    .required(),
+  document_type: Joi.string()
+    .valid('Article', 'Policy Document', 'Analysis', 'Opinion', 'Media', 'Data')
+    .required(),
+  type: Joi.string()
+    .valid('External Resource')
+    .required()
 });
