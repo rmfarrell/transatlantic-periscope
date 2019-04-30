@@ -2,6 +2,7 @@ import faker from 'faker';
 import { newModelInstance } from './helpers';
 import Relation from './relation';
 import schema from '../schemae/socialMediaItem';
+import { randomBytes } from 'crypto';
 
 export default newSocialMediaItem;
 
@@ -13,7 +14,7 @@ function fake() {
   return newSocialMediaItem({
     last_retrieved: faker.date.recent(),
     relationships: Relation().value,
-    text: faker.lorem.words({ min: 10, max: 150 }),
+    text: faker.lorem.words(faker.random.number({ min: 10, max: 150 })),
     author: faker.name.findName(),
     date: faker.date.past()
   });

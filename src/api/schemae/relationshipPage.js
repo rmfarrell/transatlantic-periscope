@@ -1,9 +1,10 @@
 import ExternalResource from './externalResource';
 import RSSItem from './rssItem';
+import SocialMediaItem from './socialMediaItem';
 import DeepDive from './deepDive';
 import Joi from '@hapi/joi';
 
-const articles = [RSSItem, DeepDive, ExternalResource];
+const articles = [RSSItem, ExternalResource, SocialMediaItem, DeepDive];
 
 export default Joi.object().keys({
   relationship_status: Joi.object()

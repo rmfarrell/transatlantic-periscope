@@ -21,9 +21,9 @@ export {
   randomArticle
 };
 
-function newModelInstance(input, schema, randomizer) {
+function newModelInstance(input, schema, randomizer, hasChildren = true) {
   if (!input && randomizer) {
-    return randomizer();
+    return randomizer(hasChildren);
   }
   const { error, value } = Joi.validate(input, schema);
   return { error, value };
@@ -65,11 +65,13 @@ function randomArticle() {
     [30, ExternalResource],
     [0, SocialMediaItem]
   ];
-  return SocialMediaItem().value;
   for (let x = 0; x < chanceMatrix.length; x++) {
     if (roll > chanceMatrix[x][0]) {
-      console.log(chanceMatrix[x][1]);
-      return chanceMatrix[x][1](false).value;
+      const { error, value } = chanceMatrix[x][1](false);
+      if (error) {
+        throw error;
+      }
+      return value;
     }
   }
 }
