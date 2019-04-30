@@ -1,0 +1,36 @@
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--merriweather);
+  margin: 0 0 0.5em;
+  font-weight: black;
+}
+
+h1 {
+  font-size: 5em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 3.6em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+p,
+blockquote,
+label,
+input,
+p input,
+h5 {
+  font-size: 1.5em;
+  line-height: 1.3em;
+}
+
+p input,
+p label {
+  font-size: 0.75em;
+}
