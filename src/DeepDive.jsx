@@ -10,8 +10,9 @@ import Card from './Card';
 
 export default function(props) {
   const [isLoading, setIsLoading] = useState(false),
-    { deepdive } = useStoreon('deepdive'),
-    {
+    { deepdive } = useStoreon('deepdive');
+  if (!deepdive.articles) return '';
+  const {
       custom_article,
       articles: { featured, collection }
     } = deepdive,

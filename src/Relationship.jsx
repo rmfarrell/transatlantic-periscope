@@ -10,8 +10,9 @@ import Card from './Card';
 
 export default function(props) {
   const [isLoading, setIsLoading] = useState(false),
-    { relationship } = useStoreon('relationship'),
-    {
+    { relationship } = useStoreon('relationship');
+  if (!relationship.articles) return '';
+  const {
       articles: { featured, collection }
     } = relationship,
     articles = collection.reduce(reduceArticleCollection, {}),
