@@ -18,8 +18,25 @@ export default function(props) {
     articles = collection.reduce(reduceArticleCollection, {}),
     tiles = [
       {
+        cat: 'Map',
+        content: {
+          name: 'FooBaria',
+          label: 'FBA',
+          colors: ['#454334', '#345392'],
+          abstract: {
+            position: [4, 9]
+          },
+          geographic: {
+            svg: '...',
+            x: 0,
+            y: 0
+          }
+        }
+      },
+      {
         cat: 'Custom Article',
-        content: custom_article
+        content: custom_article,
+        width: 2
       },
       ...featured.map(f => Object.assign(f, { featured: true }))
     ]
@@ -28,6 +45,7 @@ export default function(props) {
       )
       .map(addWidths),
     rows = makeGrid(tiles);
+  console.log(rows);
 
   function loadingView() {
     return <div className="loading">Loading....</div>;
@@ -72,7 +90,7 @@ function getClass(rowSize = 4, width = 1) {
 }
 
 function addWidths(item) {
-  item.width = 1;
+  item.width = item.width || 1;
   item.canExpand = item.width < 2;
   return item;
 }
