@@ -1,11 +1,13 @@
 .root {
 }
 
-.root > * {
-  border: 1px dotted black;
+.root > div {
   max-height: 25em;
   overflow-x: hidden;
   overflow-y: scroll;
+  background-color: white;
+  padding: 0.5em;
+  height: 100%;
 }
 
 /* TODO remove */

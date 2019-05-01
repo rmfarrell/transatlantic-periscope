@@ -79,9 +79,9 @@ function Grid(head) {
     separateFeatured() {
       let row = head;
       while (row) {
-        const types = row.items.map(({ type }) => type),
-          first = types.indexOf('featured'),
-          last = types.lastIndexOf('featured');
+        const types = row.items.map(({ featured }) => featured),
+          first = types.indexOf(true),
+          last = types.lastIndexOf(true);
 
         if (first !== -1 && first !== last) {
           // console.log(row.remove(last));
@@ -149,6 +149,7 @@ function Row(size = 4) {
     get capacity() {
       return size - this.width;
     },
+    size,
     add(item, toBeginning = false) {
       if (!item) {
         return;
