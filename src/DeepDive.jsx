@@ -29,36 +29,35 @@ export default function(props) {
       .map(addWidths),
     rows = makeGrid(tiles);
 
-  console.log(rows);
-  return (
-    <div>
-      {isLoading
-        ? 'Loading'
-        : rows.map(({ items, size }, idx) => {
+  function loadingView() {
+    return <div className="loading">Loading....</div>;
+  }
+
+  function tilesView() {
+    return rows.map(({ items, size }, idx) => {
+      return (
+        <div className="grid" key={idx}>
+          {items.map((data, idx) => {
             return (
-              <div className="grid" key={idx}>
-                {items.map((data, idx) => {
-                  return (
-                    <Card key={idx} classNames={[getClass(size, data.width)]}>
-                      <div>
-                        <h4>
-                          {data.featured ? 'Featured' : data.cat}
-                          {data.content &&
-                            data.content.length &&
-                            ` (${data.content.length})`}
-                        </h4>
-                        <pre>
-                          {JSON.stringify(data.content || data, null, 2)}
-                        </pre>
-                      </div>
-                    </Card>
-                  );
-                })}
-              </div>
+              <Card key={idx} classNames={[getClass(size, data.width)]}>
+                <div>
+                  <h4>
+                    {data.featured ? 'Featured' : data.cat}
+                    {data.content &&
+                      data.content.length &&
+                      ` (${data.content.length})`}
+                  </h4>
+                  <pre>{JSON.stringify(data.content || data, null, 2)}</pre>
+                </div>
+              </Card>
             );
           })}
-    </div>
-  );
+        </div>
+      );
+    });
+  }
+
+  return <div>{isLoading ? loadingView() : tilesView()}</div>;
 }
 
 function getClass(rowSize = 4, width = 1) {
