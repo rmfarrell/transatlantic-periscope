@@ -16,8 +16,5 @@ export default Joi.object().keys({
     .required(),
   document_type: Joi.string()
     .valid('Article', 'Policy Document', 'Analysis', 'Opinion', 'Media', 'Data')
-    .required(),
-  type: Joi.string()
-    .valid('External Resource')
     .required()
 });

@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ss from '../style/Main.module.css';
 import useStoreon from 'storeon/react';
-import deepDiveGenerator from '../api/generators/deepDive';
-import relationshipPageGenerator from '../api/generators/relationshipPage';
 
 export default function(props) {
-  const { model } = props,
-    stringify = json => {
-      try {
-        return JSON.stringify(json, null, 4);
-      } catch (e) {
-        console.error(e);
-        return {};
-      }
-    },
+  const { model, generate = () => {}, validate = () => true } = props,
     { relationship, deepdive, dispatch } = useStoreon(
       'relationship',
       'deepdive'
@@ -22,16 +12,6 @@ export default function(props) {
     [json, setJson] = useState(''),
     [error, setError] = useState(null),
     [isDirty, setIsDirty] = useState(false),
-    generate = () => {
-      switch (model) {
-        case 'deepdive':
-          return deepDiveGenerator();
-        case 'relationship':
-          return relationshipPageGenerator();
-        default:
-          return {};
-      }
-    },
     onSubmit = ev => {
       ev.preventDefault();
       let parsed;
@@ -40,6 +20,10 @@ export default function(props) {
       } catch (e) {
         setError('JSON Parsing Error');
         return;
+      }
+      const { error } = validate(parsed);
+      if (error) {
+        setError(error);
       }
       setJson(stringify(parsed));
       setError(null);
@@ -91,4 +75,13 @@ export default function(props) {
       </form>
     </div>
   );
+}
+
+function stringify(json) {
+  try {
+    return JSON.stringify(json, null, 4);
+  } catch (e) {
+    console.error(e);
+    return {};
+  }
 }

@@ -6,5 +6,8 @@ export default Joi.object().keys({
   relationships: Relation,
   text: Joi.string().required(),
   author: Joi.string().required(),
-  date: Joi.date().required()
+  date: Joi.date().required(),
+  type: Joi.string()
+    .required()
+    .valid('Social Media Item')
 });

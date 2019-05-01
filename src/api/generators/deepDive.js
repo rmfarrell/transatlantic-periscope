@@ -1,7 +1,12 @@
 import Relation from './relation';
 import faker from 'faker';
 import schema from '../schemae/deepDive';
-import { newModelInstance, fakeTitle, xTimes, randomArticle } from './helpers';
+import {
+  newModelInstance,
+  fakeTitle,
+  xTimes,
+  randomArticleCollection
+} from './helpers';
 
 export default newDeepDive;
 
@@ -18,10 +23,8 @@ function fake(hasChildren = true) {
       content: faker.lorem.words(250, 1000)
     },
     articles: {
-      featured: hasChildren ? randomArticle() : null,
-      collection: hasChildren
-        ? xTimes(randomArticle, faker.random.number({ min: 0, max: 10 }))
-        : []
+      featured: hasChildren ? randomArticleCollection(0, 3) : [],
+      collection: hasChildren ? randomArticleCollection(5, 20) : []
     },
     author: faker.name.findName(),
     creator: faker.name.findName(),

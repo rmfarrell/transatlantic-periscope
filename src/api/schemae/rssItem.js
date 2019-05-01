@@ -5,8 +5,18 @@ import Channel from './channel';
 import Url from './url';
 
 export default Joi.object().keys({
-  id: Joi.string(),
   channel: Channel,
+  type: Joi.string()
+    .valid('RSS Item')
+    .required(),
+  document_type: Joi.string().valid(
+    'Article',
+    'Policy Document',
+    'Analysis',
+    'Opinion',
+    'Media',
+    'Data'
+  ),
   item: Joi.object().keys({
     title: Joi.string().required(),
     link: Url,
@@ -14,17 +24,6 @@ export default Joi.object().keys({
     author: Joi.string(),
     enclosure: Media,
     publication_date: Joi.date(),
-    relationships: Relation,
-    document_type: Joi.string().valid(
-      'Article',
-      'Policy Document',
-      'Analysis',
-      'Opinion',
-      'Media',
-      'Data'
-    ),
-    type: Joi.string()
-      .valid('RSS Item')
-      .required()
+    relationships: Relation
   })
 });
