@@ -57,6 +57,10 @@ export default function(props) {
 
   return (
     <div className={[ss.root, error ? ss.error : ''].join(' ')}>
+      <div className={ss.schema}>
+        <h3>{model.toUpperCase()} Schema</h3>
+        <p>TK</p>
+      </div>
       <form onSubmit={onSubmit}>
         <textarea
           rows="50"
@@ -79,10 +83,6 @@ export default function(props) {
           <input type="submit" value="💾 Save" disabled={!isDirty} />
         </div>
       </form>
-      <div className={ss.schema}>
-        <h3>{model.toUpperCase()} Schema</h3>
-        <p>TK</p>
-      </div>
     </div>
   );
 }

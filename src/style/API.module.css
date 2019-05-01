@@ -7,7 +7,7 @@
 .root > * {
   margin: 0 2%;
   max-width: 60em;
-  min-width: 30em;
+  min-width: 20em;
 }
 
 .root textarea {
@@ -22,7 +22,7 @@
 }
 
 .root form {
-  max-width: 60em;
+  width: 100%;
 }
 
 .errorMsg {
