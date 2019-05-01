@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import ss from '../style/Main.module.css';
+import ss from '../style/API.module.css';
 import useStoreon from 'storeon/react';
+import Joi from '@hapi/joi';
 
 export default function(props) {
-  const { model, generate = () => {}, validate = () => true } = props,
+  const { model, generate = () => {}, schema = {} } = props,
     { relationship, deepdive, dispatch } = useStoreon(
       'relationship',
       'deepdive'
@@ -21,9 +22,11 @@ export default function(props) {
         setError('JSON Parsing Error');
         return;
       }
-      const { error } = validate(parsed);
+
+      const { error } = Joi.validate(parsed, schema);
       if (error) {
         setError(error);
+        return;
       }
       setJson(stringify(parsed));
       setError(null);
@@ -31,6 +34,7 @@ export default function(props) {
       setIsDirty(false);
     },
     update = val => {
+      setError(null);
       setJson(val);
       setIsDirty(true);
     },
@@ -52,26 +56,32 @@ export default function(props) {
   }, [data]);
 
   return (
-    <div className={ss.root}>
-      <form onSubmit={onSubmit} styles={error ? 'error' : ss.error}>
+    <div className={[ss.root, error ? ss.error : ''].join(' ')}>
+      <div className={ss.schema}>
+        <h3>{model.toUpperCase()} Schema</h3>
+        <p>TK</p>
+      </div>
+      <form onSubmit={onSubmit}>
         <textarea
           rows="50"
           cols="80"
           value={json}
           onChange={ev => update(ev.target.value)}
         />
-        <input type="submit" value="💾" disabled={!isDirty} />
-        <button onClick={ranomizeModel} type="button">
-          <span role="img" aria-label="die">
-            🎲
-          </span>
-        </button>
-        <button onClick={reset} type="button" disabled={!isDirty}>
-          <span role="img" aria-label="die">
-            🔄
-          </span>
-        </button>
-        {error && <div className={ss.error}>{error.toString()}</div>}
+        {error && <p className={ss.errorMsg}>{error.toString()}</p>}
+        <div className={ss.buttonRow}>
+          <button onClick={ranomizeModel} type="button">
+            <span role="img" aria-label="die">
+              🎲Randomize
+            </span>
+          </button>
+          <button onClick={reset} type="button" disabled={!isDirty}>
+            <span role="img" aria-label="die">
+              🔄Reset
+            </span>
+          </button>
+          <input type="submit" value="💾 Save" disabled={!isDirty} />
+        </div>
       </form>
     </div>
   );
@@ -79,7 +89,7 @@ export default function(props) {
 
 function stringify(json) {
   try {
-    return JSON.stringify(json, null, 4);
+    return JSON.stringify(json, null, 2);
   } catch (e) {
     console.error(e);
     return {};

@@ -1,2 +1,43 @@
 .root {
 }
+
+.root nav {
+  background-color: var(--col-text);
+  padding: 1em 2%;
+  margin: 0 0 2em;
+}
+
+.root nav h4 {
+  font-size: 1.1em;
+}
+
+.root nav * {
+  color: white;
+}
+
+.root nav ul {
+  display: flex;
+  margin: 0;
+}
+
+.root nav a {
+  font-size: 1.4em;
+}
+
+.root nav > ul {
+  margin: 0 0 0 2em;
+}
+
+.root nav li {
+  padding: 0;
+  margin: 0;
+}
+
+.root nav > ul li {
+  padding: 0.25em 2em 0 0;
+  margin: 0;
+}
+
+.root a.active {
+  text-decoration: underline;
+}

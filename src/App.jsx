@@ -45,24 +45,24 @@ function Main({ children }) {
       <nav>
         <ul>
           <li>
-            Relationship
+            <h4>Relationship</h4>
             <ul>
               <li>
-                <Link to="api/relationships">API</Link>
+                <NavLink to="api/relationships">API</NavLink>
               </li>
               <li>
-                <Link to="/relationships/example">Wireframe</Link>
+                <NavLink to="/relationships/example">Wireframe</NavLink>
               </li>
             </ul>
           </li>
           <li>
-            Deep Dive
+            <h4>Deep Dive</h4>
             <ul>
               <li>
-                <Link to="api/deepdives">API</Link>
+                <NavLink to="api/deepdives">API</NavLink>
               </li>
               <li>
-                <Link to="/deepdives/example">Wireframe</Link>
+                <NavLink to="/deepdives/example">Wireframe</NavLink>
               </li>
             </ul>
           </li>
@@ -72,3 +72,14 @@ function Main({ children }) {
     </div>
   );
 }
+
+const NavLink = props => (
+  <Link
+    {...props}
+    getProps={({ isCurrent }) => {
+      return {
+        className: isCurrent ? style.active : ''
+      };
+    }}
+  />
+);
