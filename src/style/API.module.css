@@ -1,12 +1,19 @@
 .root {
-  margin: auto 2%;
+  margin: auto 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.root > * {
+  margin: 0 2%;
+  max-width: 60em;
+  min-width: 30em;
 }
 
 .root textarea {
   font-size: 1.2em;
   font-family: monospace;
   width: 100%;
-  max-width: 60em;
 }
 
 .root.error textarea {

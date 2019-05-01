@@ -79,6 +79,10 @@ export default function(props) {
           <input type="submit" value="💾 Save" disabled={!isDirty} />
         </div>
       </form>
+      <div className={ss.schema}>
+        <h3>{model.toUpperCase()} Schema</h3>
+        <p>TK</p>
+      </div>
     </div>
   );
 }
