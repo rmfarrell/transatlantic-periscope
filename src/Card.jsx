@@ -3,16 +3,13 @@ import ss from './style/Card.module.css';
 
 export default function({
   backgroundColor = 'transparent',
-  className = '',
+  classNames = ['grid--item__quarter'],
   children = [],
   style = {}
 }) {
   style = Object.assign({ backgroundColor }, style);
   return (
-    <div
-      className={[className, 'grid--item__quarter', ss.root].join(' ')}
-      style={style}
-    >
+    <div className={[...classNames, ss.root].join(' ')} style={style}>
       {children}
     </div>
   );
