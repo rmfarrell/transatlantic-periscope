@@ -26,10 +26,14 @@
   border: 0;
   line-height: 1.3em;
   margin-right: 1em;
+  background-color: white;
+  border: 1px solid var(--col-text);
 }
 .buttonRow button:disabled,
 .buttonRow input[type='submit']:disabled {
   opacity: 0.5;
+  background-color: transparent;
+  border: 1px solid var(--col-white);
 }
 
 .buttonRow input[type='submit'] {
