@@ -1,0 +1,14 @@
+.root {
+}
+
+.root > * {
+  border: 1px dotted black;
+  max-height: 25em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* TODO remove */
+.root pre {
+  font-size: 1.1em;
+}

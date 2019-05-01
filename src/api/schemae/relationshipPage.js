@@ -21,7 +21,7 @@ export default Joi.object().keys({
     })
     .required(),
   articles: Joi.object().keys({
-    featured: Joi.alternatives(...articles),
+    featured: Joi.array().items(...articles),
     collection: Joi.array().items(...articles)
   }),
   country: Joi.string()

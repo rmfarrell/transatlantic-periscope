@@ -16,9 +16,16 @@ function fake(hasChildren = true) {
       defence: faker.random.number({ min: 0, max: 9 })
     },
     articles: {
-      featured: hasChildren ? randomArticle() : null,
+      featured: hasChildren
+        ? xTimes(randomArticle, faker.random.number({ min: 0, max: 3 })).filter(
+            i => !!i
+          )
+        : [],
       collection: hasChildren
-        ? xTimes(randomArticle, faker.random.number({ min: 0, max: 10 }))
+        ? xTimes(
+            randomArticle,
+            faker.random.number({ min: 0, max: 10 })
+          ).filter(x => !!x)
         : []
     },
     country: 'FR',

@@ -22,6 +22,7 @@ function newExternalResource(input) {
 
 function fake() {
   return newExternalResource({
+    type: 'External Resource',
     title: fakeTitle(5, 15),
     url: Url().value,
     description: faker.lorem.words(50, 255),
@@ -29,7 +30,6 @@ function fake() {
     publication_date: faker.date.past(),
     image: Media().value,
     relationships: Relation().value,
-    document_type: docTypes[faker.random.number(0, docTypes.length - 1)],
-    type: 'External Resource'
+    document_type: docTypes[faker.random.number(0, docTypes.length - 1)]
   });
 }

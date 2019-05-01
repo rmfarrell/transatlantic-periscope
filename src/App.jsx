@@ -4,11 +4,13 @@ import store from './store/index.js';
 import './App.css';
 import style from './style/Main.module.css';
 import APIExplorer from './api-explorer/Index.jsx';
+import DeepDive from './DeepDive.jsx';
+import Relationship from './Relationship.jsx';
 import { Router, Link } from '@reach/router';
 import deepDiveGenerator from './api/generators/deepDive';
 import relationshipPageGenerator from './api/generators/relationshipPage';
-import validateDeepDive from './api/schemae/deepDive';
-import validateRelationship from './api/schemae/relationshipPage';
+import deepDiveSchema from './api/schemae/deepDive';
+import relationshipSchema from './api/schemae/relationshipPage';
 
 function App() {
   return (
@@ -16,17 +18,19 @@ function App() {
       <Router>
         <Main path="/">
           <APIExplorer
-            path="api/relationship"
+            path="api/relationships"
             model="relationship"
             generate={relationshipPageGenerator}
-            validate={validateRelationship}
+            schema={relationshipSchema}
           />
           <APIExplorer
-            path="api/deepdive"
+            path="api/deepdives"
             model="deepdive"
             generate={deepDiveGenerator}
-            validate={validateDeepDive}
+            schema={deepDiveSchema}
           />
+          <DeepDive path="deepdives/:model" />
+          <Relationship path="relationships/:model" />
         </Main>
       </Router>
     </StoreContext.Provider>
@@ -41,13 +45,24 @@ function Main({ children }) {
       <nav>
         <ul>
           <li>
-            API
+            Relationship
             <ul>
               <li>
-                <Link to="api/relationship">Country Relationship</Link>
+                <Link to="api/relationships">API</Link>
               </li>
               <li>
-                <Link to="api/deepdive">Deep Dive</Link>
+                <Link to="/relationships/example">Wireframe</Link>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Deep Dive
+            <ul>
+              <li>
+                <Link to="api/deepdives">API</Link>
+              </li>
+              <li>
+                <Link to="/deepdives/example">Wireframe</Link>
               </li>
             </ul>
           </li>

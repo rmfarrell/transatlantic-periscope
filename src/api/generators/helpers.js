@@ -18,7 +18,8 @@ export {
   pluckFromArray,
   initialCaps,
   fakeTitle,
-  randomArticle
+  randomArticle,
+  randomArticleCollection
 };
 
 function newModelInstance(input, schema, randomizer, hasChildren = true) {
@@ -57,11 +58,18 @@ function fakeTitle(min, max) {
   return initialCaps(faker.lorem.words(faker.random.number({ min, max })));
 }
 
+// TODO: add social media
+function randomArticleCollection(min, max) {
+  return xTimes(randomArticle, faker.random.number({ min, max })).filter(
+    i => !!i
+  );
+}
+
 function randomArticle() {
   const roll = faker.random.number({ min: 0, max: 100 });
   const chanceMatrix = [
     [70, RSSItem],
-    [60, () => DeepDive(false)],
+    [60, () => DeepDive(null, false)],
     [30, ExternalResource],
     [0, SocialMediaItem]
   ];

@@ -12,6 +12,7 @@ function newSocialMediaItem(input) {
 
 function fake() {
   return newSocialMediaItem({
+    type: 'Social Media Item',
     last_retrieved: faker.date.recent(),
     relationships: Relation().value,
     text: faker.lorem.words(faker.random.number({ min: 10, max: 150 })),

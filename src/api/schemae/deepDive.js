@@ -21,7 +21,7 @@ DeepDive = Joi.object().keys({
     })
     .required(),
   articles: Joi.object().keys({
-    featured: Joi.alternatives(...articles).allow(null),
+    featured: Joi.array().items(...articles),
     collection: Joi.array().items(...articles)
   }),
   author: Joi.string().required(),
