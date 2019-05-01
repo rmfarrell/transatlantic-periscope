@@ -1,3 +1,38 @@
 .root {
-  border: 1px dotted black;
+  margin: auto 2%;
+}
+
+.root textarea {
+  font-size: 1.2em;
+  font-family: monospace;
+  width: 100%;
+  max-width: 60em;
+}
+
+.root form {
+  max-width: 60em;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5em 0 0;
+}
+
+.buttonRow button,
+.buttonRow input[type='submit'] {
+  font-size: 1.5rem;
+  padding: 0.5em;
+  border: 0;
+  line-height: 1.3em;
+  margin-right: 1em;
+}
+.buttonRow button:disabled,
+.buttonRow input[type='submit']:disabled {
+  opacity: 0.5;
+}
+
+.buttonRow input[type='submit'] {
+  margin-left: auto;
+  margin-right: 0;
 }

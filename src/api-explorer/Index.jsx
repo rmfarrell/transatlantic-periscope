@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ss from '../style/Main.module.css';
+import ss from '../style/API.module.css';
 import useStoreon from 'storeon/react';
 
 export default function(props) {
@@ -60,18 +60,20 @@ export default function(props) {
           value={json}
           onChange={ev => update(ev.target.value)}
         />
-        <input type="submit" value="💾" disabled={!isDirty} />
-        <button onClick={ranomizeModel} type="button">
-          <span role="img" aria-label="die">
-            🎲
-          </span>
-        </button>
-        <button onClick={reset} type="button" disabled={!isDirty}>
-          <span role="img" aria-label="die">
-            🔄
-          </span>
-        </button>
         {error && <div className={ss.error}>{error.toString()}</div>}
+        <div className={ss.buttonRow}>
+          <button onClick={ranomizeModel} type="button">
+            <span role="img" aria-label="die">
+              🎲Randomize
+            </span>
+          </button>
+          <button onClick={reset} type="button" disabled={!isDirty}>
+            <span role="img" aria-label="die">
+              🔄Reset
+            </span>
+          </button>
+          <input type="submit" value="💾 Save" disabled={!isDirty} />
+        </div>
       </form>
     </div>
   );
@@ -79,7 +81,7 @@ export default function(props) {
 
 function stringify(json) {
   try {
-    return JSON.stringify(json, null, 4);
+    return JSON.stringify(json, null, 2);
   } catch (e) {
     console.error(e);
     return {};
